@@ -27,7 +27,7 @@ async function main(args: string[]) {
 
   startBot(url, auth);
   console.log(" ")
-  console.log(bold('~~~~~~Starting Yuibot Farm~~~~~~'));
+  console.log(bold('~~~~~Starting Yuibot Farm~~~~~'));
 }
 
 try {

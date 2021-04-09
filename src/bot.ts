@@ -1,3 +1,5 @@
+import { timedConsoleLog } from "./helpers/consoleLogHelpers.ts";
+
 function getApiURL(discordLink: string): string {
   const splitDiscordLink: Array<string> = discordLink.split("/");
   const channelID: string = splitDiscordLink[splitDiscordLink.length - 1];
@@ -24,15 +26,24 @@ export async function startBot(discordLink: string, authorization: string) {
   const apiURL: string = getApiURL(discordLink);
 
   return window.setInterval(function () {
-    fetch(apiURL, fetchBody(authorization, "y!chop")).then(() =>
-      console.log("🪓 Chop command sent")
-    );
-    fetch(apiURL, fetchBody(authorization, "y!fish")).then(() =>
-      console.log("🎣 Fish command sent")
-    );
-    fetch(apiURL, fetchBody(authorization, "y!mine")).then(() =>
-      console.log("⛏️ Mine command sent")
-    );
+    let choptime: number = window.performance.now();
+    fetch(apiURL, fetchBody(authorization, "y!chop")).then(() => {
+      let time: number = window.performance.now() - choptime;
+      timedConsoleLog("🪓 Chop command sent", time);
+    });
+
+    let fishTime: number = window.performance.now();
+    fetch(apiURL, fetchBody(authorization, "y!fish")).then(() => {
+      let time: number = window.performance.now() - fishTime;
+      timedConsoleLog("🎣 Fish command sent", time);
+    });
+
+    let mineTime: number = window.performance.now();
+    fetch(apiURL, fetchBody(authorization, "y!mine")).then(() => {
+      let time: number = window.performance.now() - mineTime;
+      timedConsoleLog("⛏️ Mine command sent", time);
+    });
+
     console.log(" ");
   }, 7000);
 }
