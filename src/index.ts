@@ -1,5 +1,4 @@
-import { red, green, bold} from "https://deno.land/std/fmt/colors.ts";
-import { parse } from "https://deno.land/std/flags/mod.ts";
+import { red, green, bold, parse } from "./deps.ts";
 
 import { formattedConsoleLog } from "./helpers/consoleLogHelpers.ts";
 import { isUrlValid } from "./helpers/urlValidator.ts";

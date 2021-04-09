@@ -1,6 +1,7 @@
 function getApiURL(discordLink: string): string {
   const splitDiscordLink: Array<string> = discordLink.split("/");
   const channelID: string = splitDiscordLink[splitDiscordLink.length - 1];
+
   return `https://discord.com/api/v8/channels/${channelID}/messages`;
 }
 
@@ -24,10 +25,10 @@ export function startBot(discordLink: string, authorization: string) {
 
   return window.setInterval(function () {
     fetch(apiURL, fetchBody(authorization, "y!chop"));
-    console.log('\n🪓 Chop command sent')
+    console.log('\n🪓 Chop command sent');
     fetch(apiURL, fetchBody(authorization, "y!fish"));
-    console.log('🎣 Fish command sent')
+    console.log('🎣 Fish command sent');
     fetch(apiURL, fetchBody(authorization, "y!mine"));
-    console.log('⛏️ Mine command sent\n')
+    console.log('⛏️ Mine command sent\n');
   }, 7000);
 }
