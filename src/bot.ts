@@ -24,6 +24,7 @@ function fetchBody(authorization: string, command: string): object {
 
 export async function startBot(discordLink: string, authorization: string) {
   const apiURL: string = getApiURL(discordLink);
+  console.time("Program Runtime");
 
   return window.setInterval(function () {
     let choptime: number = window.performance.now();
@@ -44,6 +45,8 @@ export async function startBot(discordLink: string, authorization: string) {
       timedConsoleLog("⛏️ Mine command sent", time);
     });
 
+    console.log(" ");
+    console.timeLog("Program Runtime");
     console.log(" ");
   }, 7000);
 }
