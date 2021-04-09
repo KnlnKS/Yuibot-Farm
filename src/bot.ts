@@ -6,7 +6,7 @@ function getApiURL(discordLink: string): string {
 }
 
 function fetchBody(authorization: string, command: string): object {
-  return ({
+  return {
     headers: {
       accept: "*/*",
       authorization,
@@ -17,20 +17,22 @@ function fetchBody(authorization: string, command: string): object {
     body: `{"content":"${command}","tts":false}`,
     method: "POST",
     mode: "cors",
-  });
+  };
 }
 
-export function startBot(discordLink: string, authorization: string) {
+export async function startBot(discordLink: string, authorization: string) {
   const apiURL: string = getApiURL(discordLink);
 
   return window.setInterval(function () {
-    console.log(" ")
-    fetch(apiURL, fetchBody(authorization, "y!chop"));
-    console.log('🪓 Chop command sent');
-    fetch(apiURL, fetchBody(authorization, "y!fish"));
-    console.log('🎣 Fish command sent');
-    fetch(apiURL, fetchBody(authorization, "y!mine"));
-    console.log('⛏️ Mine command sent');
-    console.log(" ")
+    fetch(apiURL, fetchBody(authorization, "y!chop")).then(() =>
+      console.log("🪓 Chop command sent")
+    );
+    fetch(apiURL, fetchBody(authorization, "y!fish")).then(() =>
+      console.log("🎣 Fish command sent")
+    );
+    fetch(apiURL, fetchBody(authorization, "y!mine")).then(() =>
+      console.log("⛏️ Mine command sent")
+    );
+    console.log(" ");
   }, 7000);
 }
