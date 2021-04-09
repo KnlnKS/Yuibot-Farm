@@ -16,6 +16,10 @@ async function main(args: string[]) {
     Deno.exit(0);
   }
 
+  if (!auth) {
+    throw { error: "Please provide an authorization token." };
+  }
+
   if (!isUrlValid(url)) {
     throw { error: "Please provide a valid url" };
   }
