@@ -1,4 +1,5 @@
 # Files
 .gitattributes
+.gitignore
 README.md
 docker-build.sh
