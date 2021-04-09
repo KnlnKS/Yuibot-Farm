@@ -8,10 +8,12 @@ async function main(args: string[]) {
   const { url, auth, help } = parse(args);
 
   if (help) {
-    console.log(bold('\n~~~Flags~~~'));
+    console.log(" ")
+    console.log(bold('~~~Flags~~~'));
     formattedConsoleLog(green, '--url : ', 'URL for Discord Channel where messages will be sent.')
     formattedConsoleLog(green, '--auth: ', 'Authorization token for account that will send messages.')
-    formattedConsoleLog(green, '--help: ', 'Help prompt.\n')
+    formattedConsoleLog(green, '--help: ', 'Help prompt.')
+    console.log(" ")
     Deno.exit(0);
   }
 
@@ -24,7 +26,8 @@ async function main(args: string[]) {
   }
 
   startBot(url, auth);
-  console.log(bold('\n~~~~~~Starting Yuibot Farm~~~~~~\n'));
+  console.log(" ")
+  console.log(bold('~~~~~~Starting Yuibot Farm~~~~~~'));
 }
 
 try {

@@ -24,11 +24,13 @@ export function startBot(discordLink: string, authorization: string) {
   const apiURL: string = getApiURL(discordLink);
 
   return window.setInterval(function () {
+    console.log(" ")
     fetch(apiURL, fetchBody(authorization, "y!chop"));
-    console.log('\n🪓 Chop command sent');
+    console.log('🪓 Chop command sent');
     fetch(apiURL, fetchBody(authorization, "y!fish"));
     console.log('🎣 Fish command sent');
     fetch(apiURL, fetchBody(authorization, "y!mine"));
-    console.log('⛏️ Mine command sent\n');
+    console.log('⛏️ Mine command sent');
+    console.log(" ")
   }, 7000);
 }
