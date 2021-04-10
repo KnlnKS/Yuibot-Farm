@@ -28,22 +28,37 @@ export async function startBot(discordLink: string, authorization: string) {
 
   return window.setInterval(function () {
     let choptime: number = window.performance.now();
-    fetch(apiURL, fetchBody(authorization, "y!chop")).then(() => {
-      let time: number = window.performance.now() - choptime;
-      timedConsoleLog("🪓 Chop command sent", time);
-    });
+    fetch(apiURL, fetchBody(authorization, "y!chop"))
+      .then(() => {
+        let time: number = window.performance.now() - choptime;
+        timedConsoleLog("🪓 Chop command sent", time);
+      })
+      .catch((err) => {
+        let errorTime: number = window.performance.now() - choptime;
+        timedConsoleLog("🪓 Chop command failed", errorTime);
+      });
 
     let fishTime: number = window.performance.now();
-    fetch(apiURL, fetchBody(authorization, "y!fish")).then(() => {
-      let time: number = window.performance.now() - fishTime;
-      timedConsoleLog("🎣 Fish command sent", time);
-    });
+    fetch(apiURL, fetchBody(authorization, "y!fish"))
+      .then(() => {
+        let time: number = window.performance.now() - fishTime;
+        timedConsoleLog("🎣 Fish command sent", time);
+      })
+      .catch((err) => {
+        let errorTime: number = window.performance.now() - choptime;
+        timedConsoleLog("🎣 Fish command failed", errorTime);
+      });
 
     let mineTime: number = window.performance.now();
-    fetch(apiURL, fetchBody(authorization, "y!mine")).then(() => {
-      let time: number = window.performance.now() - mineTime;
-      timedConsoleLog("⛏️ Mine command sent", time);
-    });
+    fetch(apiURL, fetchBody(authorization, "y!mine"))
+      .then(() => {
+        let time: number = window.performance.now() - mineTime;
+        timedConsoleLog("⛏️ Mine command sent", time);
+      })
+      .catch((err) => {
+        let errorTime: number = window.performance.now() - choptime;
+        timedConsoleLog("⛏️ Mine command failed", errorTime);
+      });
 
     console.log(" ");
     console.timeLog("Program Runtime");
