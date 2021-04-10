@@ -10,7 +10,7 @@ function getApiURL(discordLink: string): string {
   return `https://discord.com/api/v8/channels/${channelID}/messages`;
 }
 
-function fetchBody(authorization: string, command: string): object {
+function fetchBody(authorization: string, command: string): Record<string, unknown> {
   return {
     headers: {
       accept: "*/*",
@@ -25,7 +25,7 @@ function fetchBody(authorization: string, command: string): object {
   };
 }
 
-export function startBot(discordLink: string, authorization: string) {
+export function startBot(discordLink: string, authorization: string): number {
   const apiURL: string = getApiURL(discordLink);
   console.time("Program Runtime");
 
