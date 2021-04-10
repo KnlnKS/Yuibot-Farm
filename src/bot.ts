@@ -1,4 +1,4 @@
-import { timedConsoleLog } from "./helpers/consoleLogHelpers.ts";
+import { timedConsoleLog, timedConsoleError } from "./helpers/consoleLogHelpers.ts";
 
 function getApiURL(discordLink: string): string {
   const splitDiscordLink: Array<string> = discordLink.split("/");
@@ -35,7 +35,7 @@ export async function startBot(discordLink: string, authorization: string) {
       })
       .catch((err) => {
         let errorTime: number = window.performance.now() - choptime;
-        timedConsoleLog("🪓 Chop command failed", errorTime);
+        timedConsoleError("🪓 Chop command failed", errorTime);
       });
 
     let fishTime: number = window.performance.now();
@@ -46,7 +46,7 @@ export async function startBot(discordLink: string, authorization: string) {
       })
       .catch((err) => {
         let errorTime: number = window.performance.now() - choptime;
-        timedConsoleLog("🎣 Fish command failed", errorTime);
+        timedConsoleError("🎣 Fish command failed", errorTime);
       });
 
     let mineTime: number = window.performance.now();
@@ -57,7 +57,7 @@ export async function startBot(discordLink: string, authorization: string) {
       })
       .catch((err) => {
         let errorTime: number = window.performance.now() - choptime;
-        timedConsoleLog("⛏️ Mine command failed", errorTime);
+        timedConsoleError("⛏️ Mine command failed", errorTime);
       });
 
     console.log(" ");
