@@ -1,4 +1,7 @@
-import { timedConsoleLog, timedConsoleError } from "./helpers/consoleLogHelpers.ts";
+import {
+  timedConsoleError,
+  timedConsoleLog,
+} from "./helpers/consoleLogHelpers.ts";
 
 function getApiURL(discordLink: string): string {
   const splitDiscordLink: Array<string> = discordLink.split("/");
@@ -22,7 +25,7 @@ function fetchBody(authorization: string, command: string): object {
   };
 }
 
-export async function startBot(discordLink: string, authorization: string) {
+export function startBot(discordLink: string, authorization: string) {
   const apiURL: string = getApiURL(discordLink);
   console.time("Program Runtime");
 
