@@ -30,36 +30,36 @@ export function startBot(discordLink: string, authorization: string) {
   console.time("Program Runtime");
 
   return window.setInterval(function () {
-    let choptime: number = window.performance.now();
+    const choptime: number = window.performance.now();
     fetch(apiURL, fetchBody(authorization, "y!chop"))
       .then(() => {
-        let time: number = window.performance.now() - choptime;
+        const time: number = window.performance.now() - choptime;
         timedConsoleLog("🪓 Chop command sent", time);
       })
-      .catch((err) => {
-        let errorTime: number = window.performance.now() - choptime;
+      .catch(() => {
+        const errorTime: number = window.performance.now() - choptime;
         timedConsoleError("🪓 Chop command failed", errorTime);
       });
 
-    let fishTime: number = window.performance.now();
+    const fishTime: number = window.performance.now();
     fetch(apiURL, fetchBody(authorization, "y!fish"))
       .then(() => {
-        let time: number = window.performance.now() - fishTime;
+        const time: number = window.performance.now() - fishTime;
         timedConsoleLog("🎣 Fish command sent", time);
       })
-      .catch((err) => {
-        let errorTime: number = window.performance.now() - choptime;
+      .catch(() => {
+        const errorTime: number = window.performance.now() - choptime;
         timedConsoleError("🎣 Fish command failed", errorTime);
       });
 
-    let mineTime: number = window.performance.now();
+    const mineTime: number = window.performance.now();
     fetch(apiURL, fetchBody(authorization, "y!mine"))
       .then(() => {
-        let time: number = window.performance.now() - mineTime;
+        const time: number = window.performance.now() - mineTime;
         timedConsoleLog("⛏️ Mine command sent", time);
       })
-      .catch((err) => {
-        let errorTime: number = window.performance.now() - choptime;
+      .catch(() => {
+        const errorTime: number = window.performance.now() - choptime;
         timedConsoleError("⛏️ Mine command failed", errorTime);
       });
 
