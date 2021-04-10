@@ -1,6 +1,9 @@
-import { bold, green, parse, red } from "./deps.ts";
+import { bold, green, parse } from "./deps.ts";
 
-import { formattedConsoleLog } from "./helpers/consoleLogHelpers.ts";
+import {
+  consoleError,
+  formattedConsoleLog,
+} from "./helpers/consoleLogHelpers.ts";
 import { isUrlValid } from "./helpers/urlValidator.ts";
 import { startBot } from "./bot.ts";
 
@@ -38,5 +41,5 @@ function main(args: string[]) {
 try {
   main(Deno.args);
 } catch ({ error }) {
-  console.log(red(`Error: ${error}`));
+  consoleError(`Error: ${error}`);
 }

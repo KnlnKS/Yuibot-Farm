@@ -1,5 +1,9 @@
 import { green, red } from "../deps.ts";
 
+export function consoleError(message: string) {
+  console.log(red(message));
+}
+
 export function formattedConsoleLog(
   color: Function,
   prefix: string,
