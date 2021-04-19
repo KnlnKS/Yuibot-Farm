@@ -30,6 +30,10 @@ export function startBot(discordLink: string, authorization: string): number {
   console.time("Program Runtime");
 
   return window.setInterval(function () {
+    console.log(" ");
+    console.timeLog("Program Runtime");
+    console.log(" ");
+
     const choptime: number = window.performance.now();
     fetch(apiURL, fetchBody(authorization, "y!chop"))
       .then(() => {
@@ -48,7 +52,7 @@ export function startBot(discordLink: string, authorization: string): number {
         timedConsoleLog("🎣 Fish command sent", time);
       })
       .catch(() => {
-        const errorTime: number = window.performance.now() - choptime;
+        const errorTime: number = window.performance.now() - fishTime;
         timedConsoleError("🎣 Fish command failed", errorTime);
       });
 
@@ -59,12 +63,8 @@ export function startBot(discordLink: string, authorization: string): number {
         timedConsoleLog("⛏️ Mine command sent", time);
       })
       .catch(() => {
-        const errorTime: number = window.performance.now() - choptime;
+        const errorTime: number = window.performance.now() - mineTime;
         timedConsoleError("⛏️ Mine command failed", errorTime);
       });
-
-    console.log(" ");
-    console.timeLog("Program Runtime");
-    console.log(" ");
   }, 7000);
 }
